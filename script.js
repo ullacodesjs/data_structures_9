@@ -12,21 +12,24 @@ const restaurant = {
   starterMenu: ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
   mainMenu: ["Pizza", "Pasta", "Risotto"],
 
-  //   openingHours: {
-  //     thu: {
-  //       open: 12,
-  //       close: 22,
-  //     },
-  //     fri: {
-  //       open: 11,
-  //       close: 23,
-  //     },
-  //     sat: {
-  //       open: 0, // Open 24 hours
-  //       close: 24,
-  //     },
-  //   },
+  order: function (starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
 };
+//   openingHours: {
+//     thu: {
+//       open: 12,
+//       close: 22,
+//     },
+//     fri: {
+//       open: 11,
+//       close: 23,
+//     },
+//     sat: {
+//       open: 0, // Open 24 hours
+//       close: 24,
+//     },
+//   },
 
 const arr = [2, 3, 4];
 const a = arr[0];
@@ -35,3 +38,37 @@ const c = arr[2];
 //looks like an array but its a destructing assignment make sure you declare the variable using 'const'
 const [x, y, z] = arr;
 console.log(x, y, z);
+console.log(arr);
+
+// !!!you can skip an array by leaving a space with commas making the second the third.
+
+let [main, , secondary] = restaurant.categories;
+console.log(main, secondary);
+
+// !!!this is how you can swap variables
+
+//const temp = main;
+//main = secondary;
+//secondary = temp;
+//console.log(main, secondary);
+
+//!!! better way to swap variables
+[secondary, main] = [secondary, main];
+console.log(main, secondary);
+
+// recieve 2 return values from a function
+const [starter, mainCourse] = restaurant.order(2, 0);
+console.log(starter, mainCourse);
+
+//nested array destructing
+
+const nested = [2, 4, [5, 6]];
+// const [i, , j] = nested;
+// console.log(i, j);
+const [i, , [j, k]] = nested;
+console.log(i, j, k);
+
+// default values
+
+const [p = 1, q = 1, r = 1] = [8, 9];
+console.log(p, q, r);
